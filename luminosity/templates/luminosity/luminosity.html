@@ -1,0 +1,14 @@
+{% extends 'luminosity/base.html' %}
+{% block content %}
+<div class="container">
+    <form method="get">
+        <input type="number" name="value">
+        <button type="submit">Adicionar</button>
+    </form>
+    {% for measure in luminosity %}
+    <ul class="list-group">
+        <li class="list-group-item">{{measure.type}} = {{measure.value}}</li>
+    </ul>
+    {% endfor %}
+</div>
+{% endblock %}

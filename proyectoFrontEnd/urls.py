@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from luminosity import views as luminosity_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', luminosity_views.luminosity, name='luminosity'),
 ]
+
+
