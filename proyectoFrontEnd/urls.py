@@ -19,7 +19,8 @@ from luminosity import views as luminosity_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', luminosity_views.luminosity, name='luminosity'),
+    path('luminosity/', luminosity_views.luminosity, name='luminosity'),
+    path('', luminosity_views.participante, name='participante'),
 ]
 
 

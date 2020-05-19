@@ -1,0 +1,31 @@
+{% extends 'luminosity/base.html' %}
+{% block content %}
+<div class="container">
+    <form method="get">
+        <label>Inserte los datos</label><br>
+        <label>Cedula: </label>
+        <input name="cedula"><br>
+        <label>Nombre: </label>
+        <input name="nombre"><br>
+        <label>Actividad: </label>
+        <select name="actividad">
+            <option>Argricultura</option>
+            <option>Comercio</option>
+            <option>Investigación</option>
+            <option>Insumos</option>
+            <option>Transporte</option>
+        </select><br>
+        <label>Estrato: </label>
+        <input type="number" name="estrato" min="1" max="6"><br>
+        <button type="submit">Adicionar</button><br>
+    </form>
+    {% for medicion in datos %}
+    <ul class="list-group">
+        <li class="list-group-item">Cedula: {{medicion.cedula}}</li>
+        <li class="list-group-item">Nombre: {{medicion.nombre}}</li>
+        <li class="list-group-item">Actividad = {{medicion.actividad}}</li>
+        <li class="list-group-item">Estrato: {{medicion.estrato}}</li>
+    </ul>
+    {% endfor %}
+</div>
+{% endblock %}
