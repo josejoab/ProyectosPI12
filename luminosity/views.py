@@ -16,12 +16,12 @@ def luminosity(request):
         if value:
             # Crea el json para realizar la petición POST al Web Service
             args = {'type': 'cd', 'value': value}
-            response = requests.post('https://p1backend.azurewebsites.net/', args)
+            response = requests.post('http://p1backend.azurewebsites.net/luminosity/', args)
             # Convierte la respuesta en JSON
             measure_json = response.json()
 
     # Realiza una petición GET al Web Services
-    response = requests.get('https://p1backend.azurewebsites.net/')
+    response = requests.get('http://p1backend.azurewebsites.net/luminosity/')
     # Convierte la respuesta en JSON
     luminosity = response.json()
     # Rederiza la respuesta en el template measure
@@ -43,12 +43,12 @@ def participante(request):
         # Crea el json para realizar la petición POST al Web Service
             args = {'cedula': cedula, 'nombre': nombre, 'actividad': actividad, 'estrato': estrato}
             print(args)
-            response = requests.post('https://p1backend.azurewebsites.net/', args)
+            response = requests.post('http://p1backend.azurewebsites.net/participante/', args)
             # Convierte la respuesta en JSON
             medicion_json = response.json()
 
     # Realiza una petición GET al Web Services
-    response = requests.get('https://p1backend.azurewebsites.net/')
+    response = requests.get('http://p1backend.azurewebsites.net/participante/')
     # Convierte la respuesta en JSON
     datos = response.json()
     # Rederiza la respuesta en el template measure
