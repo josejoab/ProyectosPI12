@@ -16,12 +16,12 @@ def luminosity(request):
         if value:
             # Crea el json para realizar la petición POST al Web Service
             args = {'type': 'cd', 'value': value}
-            response = requests.post('http://127.0.0.1:8000/luminosity/', args)
+            response = requests.post('https://p1backend.azurewebsites.net/', args)
             # Convierte la respuesta en JSON
             measure_json = response.json()
 
     # Realiza una petición GET al Web Services
-    response = requests.get('http://127.0.0.1:8000/luminosity/')
+    response = requests.get('https://p1backend.azurewebsites.net/')
     # Convierte la respuesta en JSON
     luminosity = response.json()
     # Rederiza la respuesta en el template measure
