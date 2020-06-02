@@ -4,7 +4,7 @@ import requests
 
 from matplotlib import pyplot
 import io
-#from django.http import HttpResponse
+from django.http import HttpResponse as hp
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 from random import sample
 
@@ -77,7 +77,7 @@ def grafico():
     canvas = FigureCanvasAgg(pyplot)
     canvas.print_png(buf)
 
-    response = HttpResponse(buf.getvalue(), content_type='image/png')
+    response = hp(buf.getvalue(), content_type='image/png')
     response['Content-Length'] = str(len(response.content))
     return response
 
