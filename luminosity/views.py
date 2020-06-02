@@ -1,6 +1,12 @@
 from django.shortcuts import render, HttpResponse
 from luminosity import templates
 import requests
+
+from matplotlib import pyplot
+import io
+#from django.http import HttpResponse
+from matplotlib.backends.backend_agg import FigureCanvasAgg
+
 #import request
 # Create your views here.
 
@@ -54,3 +60,22 @@ def participante(request):
     # Rederiza la respuesta en el template measure
     return render(request, "luminosity/participantes.html", {'datos': datos})
     
+def grafico():
+    personas = ('en peligro', 'fuera de peligro')
+    valores = (50, 20)
+    colores = ('red', 'blue')
+
+    _, _, texto = pyplot.pie(valores, colores, labels=personas, autopct='%1.1f%%')
+
+    for text in texto:
+        text.set_color('white')
+    pyplot.axis('equal')
+    pyplot.title('Personas')
+
+    buf = io.BytesIO()
+    canvas = FigureCanvasAgg(pyplot)
+    canvas.print_png(buf)
+
+    response = HttpResponse(buf.getvalue(), content_type='image/png')
+    response['Content-Length'] = str(len(response.content))
+    return response
